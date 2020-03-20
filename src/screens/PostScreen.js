@@ -11,7 +11,6 @@ import {
 import { useDispatch, useSelector } from 'react-redux'
 import { Item, HeaderButtons } from 'react-navigation-header-buttons'
 import { AppHeaderIcon } from '../components/AppHeaderIcon'
-import { DATA } from '../data'
 import { THEME } from '../theme'
 import { toogleBooked, removePost } from '../../store/actions/post'
 

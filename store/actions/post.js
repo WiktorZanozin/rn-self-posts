@@ -1,11 +1,10 @@
 import { LOAD_POSTS, TOGGLE_BOOKED, REMOVE_POST,ADD_POST } from "../types"
-import { DATA } from "../../src/data"
-import { postReducer } from "../reducers/post"
+
 
 export const loadPosts=()=>{
     return{
         type: LOAD_POSTS,
-        payload: DATA
+        payload: []
     }
 }
 

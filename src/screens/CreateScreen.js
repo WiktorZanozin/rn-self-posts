@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
 import {
   View,
   Text,
@@ -15,23 +15,26 @@ import { HeaderButtons, Item } from 'react-navigation-header-buttons'
 import { AppHeaderIcon } from '../components/AppHeaderIcon'
 import { THEME } from '../theme'
 import { addPost } from '../../store/actions/post'
+import { PhotoPicker } from '../components/PhotoPicker'
 
 export const CreateScreen = ({ navigation }) => {
   const dispatch = useDispatch()
   const [text, setText] = useState('')
-
-  const img =
-    'https://static.coindesk.com/wp-content/uploads/2019/01/shutterstock_1012724596-860x430.jpg'
+  const imageRef=useRef()
 
   const saveHandler = () => {
     const post = {
       date: new Date().toJSON(),
       text: text,
-      img: img,
+      img: imageRef.current,
       booked: false
     }
     dispatch(addPost(post))
     navigation.navigate('Main')
+  }
+
+  const photopickHandler=(uri)=>{
+    imageRef.current=uri
   }
 
   return (
@@ -46,16 +49,12 @@ export const CreateScreen = ({ navigation }) => {
             onChangeText={setText}
             multiline
           />
-          <Image
-            style={{ width: '100%', height: 200, marginBottom: 10 }}
-            source={{
-              uri: img
-            }}
-          />
+          <PhotoPicker onPick={photopickHandler}/>
           <Button
             title='Создать пост'
             color={THEME.MAIN_COLOR}
             onPress={saveHandler}
+            disabled={!text}
           />
         </View>
       </TouchableWithoutFeedback>
@@ -65,7 +64,7 @@ export const CreateScreen = ({ navigation }) => {
 
 CreateScreen.navigationOptions = ({ navigation }) => ({
   headerTitle: 'Создать пост',
-  headerLeft: (
+  headerLeft:(()=>
     <HeaderButtons HeaderButtonComponent={AppHeaderIcon}>
       <Item
         title='Toggle Drawer'
