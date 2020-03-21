@@ -31,7 +31,6 @@ const styles=StyleSheet.create({
         alignItems:'center'
     },
     version:{
-        //fontFamily:'open-bold'
-        
+        fontFamily:'open-bold'    
     }
 })

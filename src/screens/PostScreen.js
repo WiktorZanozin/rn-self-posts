@@ -31,8 +31,8 @@ export const PostScreen = ({ navigation }) => {
   }, [booked])
 
   const toggleHandler = useCallback(() => {
-    dispatch(toogleBooked(postId))
-  }, [dispatch, postId])
+    dispatch(toogleBooked(post))
+  }, [dispatch, post])
 
   useEffect(() => {
     navigation.setParams({ toggleHandler })
@@ -98,6 +98,6 @@ const styles = StyleSheet.create({
     padding: 10
   },
   title: {
-   // fontFamily: 'open-regular'
+    fontFamily: 'open-regular'
   }
 })

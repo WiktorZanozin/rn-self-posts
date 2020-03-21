@@ -82,7 +82,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 20,
     textAlign: 'center',
-   // fontFamily: 'open-regular',
+    fontFamily: 'open-regular',
     marginVertical: 10
   },
   textarea: {

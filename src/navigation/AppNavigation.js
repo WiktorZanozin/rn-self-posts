@@ -102,7 +102,7 @@ const MainNavigator=createDrawerNavigator({
   contentOptions:{
     activeTintColor:THEME.MAIN_COLOR,
     labelStyle:{
-      //fontfamily
+      fontFamily:'open-regular'
     }
   }
 })
